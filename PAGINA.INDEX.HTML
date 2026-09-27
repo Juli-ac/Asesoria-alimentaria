@@ -1,0 +1,1574 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PUPAA | Asesoramiento Alimentario</title>
+
+    <meta name="description"
+          content="Asesoramiento para emprendimientos y pequeñas unidades productivas de alimentos. PUPAA, registros, rotulado y documentación alimentaria.">
+
+    <style>
+
+        /* =========================
+           VARIABLES
+        ========================= */
+
+        :root {
+            --verde: #174936;
+            --verde-claro: #2f6b52;
+            --crema: #f7f3ea;
+            --blanco: #ffffff;
+            --terracota: #c97955;
+            --texto: #26332e;
+            --gris: #68736e;
+            --borde: #e2e5df;
+            --sombra: 0 10px 30px rgba(23, 73, 54, 0.08);
+            --radio: 18px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: var(--texto);
+            background: var(--blanco);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: min(1120px, 92%);
+            margin: auto;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255,255,255,0.96);
+            border-bottom: 1px solid var(--borde);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav {
+            height: 76px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 27px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: var(--verde);
+        }
+
+        .logo span {
+            color: var(--terracota);
+        }
+
+        nav {
+            display: flex;
+            gap: 26px;
+            align-items: center;
+        }
+
+        nav a {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--texto);
+        }
+
+        nav a:hover {
+            color: var(--verde-claro);
+        }
+
+        .nav-button {
+            background: var(--verde);
+            color: white !important;
+            padding: 11px 18px;
+            border-radius: 30px;
+        }
+
+        .menu-btn {
+            display: none;
+            border: none;
+            background: transparent;
+            font-size: 27px;
+            cursor: pointer;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            background:
+                radial-gradient(circle at 85% 20%, rgba(201,121,85,.15), transparent 30%),
+                linear-gradient(135deg, var(--crema), #ffffff);
+            padding: 95px 0 85px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.15fr .85fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #e5eee9;
+            color: var(--verde);
+            padding: 8px 14px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: clamp(42px, 6vw, 68px);
+            line-height: 1.05;
+            color: var(--verde);
+            margin-bottom: 25px;
+        }
+
+        .hero p {
+            font-size: 19px;
+            color: var(--gris);
+            max-width: 650px;
+            margin-bottom: 32px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 23px;
+            border-radius: 10px;
+            font-weight: bold;
+            border: 2px solid var(--verde);
+            transition: .2s;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--verde);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--verde-claro);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            color: var(--verde);
+            background: transparent;
+        }
+
+        .btn-secondary:hover {
+            background: #edf3ef;
+        }
+
+        .hero-card {
+            background: white;
+            padding: 35px;
+            border-radius: 25px;
+            box-shadow: var(--sombra);
+            border: 1px solid var(--borde);
+        }
+
+        .hero-card h3 {
+            color: var(--verde);
+            margin-bottom: 20px;
+            font-size: 23px;
+        }
+
+        .check {
+            display: flex;
+            gap: 12px;
+            margin: 14px 0;
+            color: var(--texto);
+        }
+
+        .check-icon {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: #e4efe9;
+            color: var(--verde);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        /* =========================
+           GENERAL
+        ========================= */
+
+        section {
+            padding: 85px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 50px;
+        }
+
+        .section-title h2 {
+            font-size: 38px;
+            color: var(--verde);
+            margin-bottom: 13px;
+        }
+
+        .section-title p {
+            color: var(--gris);
+        }
+
+        /* =========================
+           SERVICIOS
+        ========================= */
+
+        .services {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .service {
+            padding: 30px;
+            border: 1px solid var(--borde);
+            border-radius: var(--radio);
+            transition: .25s;
+            background: white;
+        }
+
+        .service:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--sombra);
+            border-color: #cad8d1;
+        }
+
+        .service-icon {
+            font-size: 31px;
+            margin-bottom: 17px;
+        }
+
+        .service h3 {
+            color: var(--verde);
+            margin-bottom: 10px;
+            font-size: 21px;
+        }
+
+        .service p {
+            color: var(--gris);
+            font-size: 15px;
+        }
+
+        /* =========================
+           PROCESO
+        ========================= */
+
+        .process-section {
+            background: var(--crema);
+        }
+
+        .process {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .step {
+            position: relative;
+            background: white;
+            padding: 28px;
+            border-radius: var(--radio);
+            box-shadow: 0 5px 20px rgba(0,0,0,.04);
+        }
+
+        .step-number {
+            font-size: 14px;
+            font-weight: bold;
+            color: var(--terracota);
+            margin-bottom: 12px;
+        }
+
+        .step h3 {
+            color: var(--verde);
+            margin-bottom: 8px;
+        }
+
+        .step p {
+            font-size: 14px;
+            color: var(--gris);
+        }
+
+        /* =========================
+           PRECIOS
+        ========================= */
+
+        .pricing {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .price-card {
+            border: 1px solid var(--borde);
+            border-radius: var(--radio);
+            padding: 32px;
+            position: relative;
+            background: white;
+        }
+
+        .price-card.featured {
+            border: 2px solid var(--verde);
+            transform: translateY(-8px);
+            box-shadow: var(--sombra);
+        }
+
+        .recommended {
+            position: absolute;
+            top: -13px;
+            left: 25px;
+            background: var(--terracota);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .price-card h3 {
+            color: var(--verde);
+            font-size: 22px;
+            margin-bottom: 12px;
+        }
+
+        .price {
+            font-size: 30px;
+            font-weight: bold;
+            color: var(--texto);
+            margin-bottom: 20px;
+        }
+
+        .price-list {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+
+        .price-list li {
+            padding: 7px 0;
+            font-size: 14px;
+            color: var(--gris);
+        }
+
+        /* =========================
+           DIAGNOSTICO
+        ========================= */
+
+        .diagnostic {
+            background: var(--verde);
+            color: white;
+            border-radius: 30px;
+            padding: 60px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .diagnostic h2 {
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        .diagnostic p {
+            color: #dce9e3;
+        }
+
+        .diagnostic-box {
+            background: white;
+            color: var(--texto);
+            padding: 28px;
+            border-radius: 18px;
+        }
+
+        .diagnostic-box h3 {
+            color: var(--verde);
+            margin-bottom: 15px;
+        }
+
+        .diagnostic-box select,
+        .diagnostic-box input {
+            width: 100%;
+            padding: 13px;
+            margin-bottom: 12px;
+            border: 1px solid var(--borde);
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        /* =========================
+           FAQ
+        ========================= */
+
+        .faq {
+            max-width: 850px;
+            margin: auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--borde);
+        }
+
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            text-align: left;
+            padding: 20px 0;
+            font-size: 17px;
+            font-weight: bold;
+            color: var(--verde);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .faq-answer {
+            display: none;
+            padding: 0 0 20px;
+            color: var(--gris);
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        /* =========================
+           SOBRE MI
+        ========================= */
+
+        .about {
+            background: var(--crema);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: .7fr 1.3fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .profile {
+            background: white;
+            border-radius: 25px;
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--verde);
+            font-size: 65px;
+            font-weight: bold;
+            box-shadow: var(--sombra);
+        }
+
+        .about h2 {
+            color: var(--verde);
+            font-size: 38px;
+            margin-bottom: 20px;
+        }
+
+        .about p {
+            color: var(--gris);
+            margin-bottom: 15px;
+        }
+
+        /* =========================
+           CONTACTO
+        ========================= */
+
+        .contact {
+            text-align: center;
+        }
+
+        .contact h2 {
+            color: var(--verde);
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .contact p {
+            color: var(--gris);
+            max-width: 650px;
+            margin: 0 auto 30px;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #102f25;
+            color: white;
+            padding: 45px 0;
+        }
+
+        .footer-grid {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .footer-logo {
+            font-size: 26px;
+            font-weight: bold;
+        }
+
+        .footer-text {
+            color: #c9d8d1;
+            font-size: 14px;
+            margin-top: 8px;
+        }
+
+        /* =========================
+           WHATSAPP
+        ========================= */
+
+        .whatsapp {
+            position: fixed;
+            right: 22px;
+            bottom: 22px;
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            background: #25D366;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            box-shadow: 0 8px 25px rgba(0,0,0,.18);
+            z-index: 2000;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 850px) {
+
+            nav {
+                display: none;
+                position: absolute;
+                top: 76px;
+                left: 0;
+                right: 0;
+                background: white;
+                padding: 20px;
+                flex-direction: column;
+                border-bottom: 1px solid var(--borde);
+            }
+
+            nav.active {
+                display: flex;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .hero-grid,
+            .diagnostic,
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .services,
+            .pricing {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .process {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .diagnostic {
+                padding: 35px;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            section {
+                padding: 65px 0;
+            }
+
+            .hero {
+                padding: 65px 0;
+            }
+
+            h1 {
+                font-size: 43px;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+
+            .services,
+            .pricing,
+            .process {
+                grid-template-columns: 1fr;
+            }
+
+            .price-card.featured {
+                transform: none;
+            }
+
+            .section-title h2,
+            .diagnostic h2,
+            .about h2,
+            .contact h2 {
+                font-size: 30px;
+            }
+
+            .diagnostic {
+                border-radius: 20px;
+                padding: 25px;
+            }
+
+            .whatsapp {
+                width: 52px;
+                height: 52px;
+                right: 15px;
+                bottom: 15px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+    <div class="container nav">
+
+        <a href="#inicio" class="logo">
+            PUPAA<span>.</span>
+        </a>
+
+        <button class="menu-btn" onclick="toggleMenu()">
+            ☰
+        </button>
+
+        <nav id="menu">
+
+            <a href="#servicios">Servicios</a>
+
+            <a href="#proceso">Cómo trabajamos</a>
+
+            <a href="#precios">Precios</a>
+
+            <a href="#faq">Preguntas frecuentes</a>
+
+            <a href="#contacto" class="nav-button">
+                Contacto
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero" id="inicio">
+
+    <div class="container hero-grid">
+
+        <div>
+
+            <span class="tag">
+                ASESORAMIENTO ALIMENTARIO
+            </span>
+
+            <h1>
+                Formalizá tu emprendimiento alimentario.
+            </h1>
+
+            <p>
+                Te acompañamos en la gestión de PUPAA,
+                registros, documentación y requisitos
+                necesarios para desarrollar tu actividad
+                alimentaria.
+            </p>
+
+            <div class="buttons">
+
+                <a href="#diagnostico" class="btn btn-primary">
+                    Quiero asesorarme
+                </a>
+
+                <a href="#servicios" class="btn btn-secondary">
+                    Ver servicios
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="hero-card">
+
+            <h3>
+                ¿Tenés un emprendimiento alimentario?
+            </h3>
+
+            <div class="check">
+                <span class="check-icon">✓</span>
+                <span>Elaborás alimentos y querés formalizarte.</span>
+            </div>
+
+            <div class="check">
+                <span class="check-icon">✓</span>
+                <span>No sabés qué trámite necesitás.</span>
+            </div>
+
+            <div class="check">
+                <span class="check-icon">✓</span>
+                <span>Necesitás ayuda con documentación.</span>
+            </div>
+
+            <div class="check">
+                <span class="check-icon">✓</span>
+                <span>Querés comercializar tus productos.</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     SERVICIOS
+========================= -->
+
+<section id="servicios">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>
+                ¿En qué podemos ayudarte?
+            </h2>
+
+            <p>
+                Servicios de asesoramiento orientados a
+                emprendimientos y empresas alimentarias.
+            </p>
+
+        </div>
+
+
+        <div class="services">
+
+            <div class="service">
+
+                <div class="service-icon">🏠</div>
+
+                <h3>
+                    Gestión PUPAA
+                </h3>
+
+                <p>
+                    Asesoramiento y acompañamiento para
+                    pequeñas unidades productivas de
+                    alimentos artesanales.
+                </p>
+
+            </div>
+
+
+            <div class="service">
+
+                <div class="service-icon">🏭</div>
+
+                <h3>
+                    RNE
+                </h3>
+
+                <p>
+                    Asesoramiento relacionado con la
+                    inscripción y requisitos del
+                    establecimiento elaborador.
+                </p>
+
+            </div>
+
+
+            <div class="service">
+
+                <div class="service-icon">🥫</div>
+
+                <h3>
+                    RNPA
+                </h3>
+
+                <p>
+                    Acompañamiento para la inscripción
+                    y documentación necesaria de productos
+                    alimenticios.
+                </p>
+
+            </div>
+
+
+            <div class="service">
+
+                <div class="service-icon">🏷️</div>
+
+                <h3>
+                    Rotulado
+                </h3>
+
+                <p>
+                    Revisión de información y requisitos
+                    aplicables al rotulado de alimentos.
+                </p>
+
+            </div>
+
+
+            <div class="service">
+
+                <div class="service-icon">📋</div>
+
+                <h3>
+                    Documentación
+                </h3>
+
+                <p>
+                    Desarrollo y revisión de documentación
+                    necesaria para la actividad alimentaria.
+                </p>
+
+            </div>
+
+
+            <div class="service">
+
+                <div class="service-icon">🔎</div>
+
+                <h3>
+                    Diagnóstico
+                </h3>
+
+                <p>
+                    Evaluamos tu situación y te indicamos
+                    qué requisitos y trámites podrían
+                    corresponder.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PROCESO
+========================= -->
+
+<section class="process-section" id="proceso">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>
+                ¿Cómo trabajamos?
+            </h2>
+
+            <p>
+                Un proceso simple para que sepas
+                qué necesitás antes de comenzar.
+            </p>
+
+        </div>
+
+
+        <div class="process">
+
+            <div class="step">
+
+                <div class="step-number">
+                    01
+                </div>
+
+                <h3>
+                    Contanos
+                </h3>
+
+                <p>
+                    Qué producto elaborás, dónde lo
+                    elaborás y qué querés lograr.
+                </p>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    02
+                </div>
+
+                <h3>
+                    Analizamos
+                </h3>
+
+                <p>
+                    Revisamos la situación de tu
+                    emprendimiento.
+                </p>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    03
+                </div>
+
+                <h3>
+                    Te indicamos
+                </h3>
+
+                <p>
+                    Qué trámites y documentación
+                    podrían corresponder.
+                </p>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    04
+                </div>
+
+                <h3>
+                    Te acompañamos
+                </h3>
+
+                <p>
+                    Durante la preparación y gestión
+                    del proceso.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PRECIOS
+========================= -->
+
+<section id="precios">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>
+                Servicios y precios
+            </h2>
+
+            <p>
+                Los valores pueden variar según el producto,
+                establecimiento y complejidad del caso.
+            </p>
+
+        </div>
+
+
+        <div class="pricing">
+
+
+            <div class="price-card">
+
+                <h3>
+                    PUPAA
+                </h3>
+
+                <div class="price">
+                    Desde $XX.XXX
+                </div>
+
+                <ul class="price-list">
+
+                    <li>✓ Relevamiento inicial</li>
+
+                    <li>✓ Revisión de documentación</li>
+
+                    <li>✓ Asesoramiento</li>
+
+                    <li>✓ Acompañamiento del proceso</li>
+
+                </ul>
+
+                <a href="#diagnostico" class="btn btn-primary">
+                    Consultar
+                </a>
+
+            </div>
+
+
+            <div class="price-card featured">
+
+                <span class="recommended">
+                    MÁS CONSULTADO
+                </span>
+
+                <h3>
+                    Producto
+                </h3>
+
+                <div class="price">
+                    Desde $XX.XXX
+                </div>
+
+                <ul class="price-list">
+
+                    <li>✓ Evaluación del producto</li>
+
+                    <li>✓ Documentación</li>
+
+                    <li>✓ Revisión de rotulado</li>
+
+                    <li>✓ Acompañamiento</li>
+
+                </ul>
+
+                <a href="#diagnostico" class="btn btn-primary">
+                    Consultar
+                </a>
+
+            </div>
+
+
+            <div class="price-card">
+
+                <h3>
+                    Consulta
+                </h3>
+
+                <div class="price">
+                    $XX.XXX
+                </div>
+
+                <ul class="price-list">
+
+                    <li>✓ Consulta técnica</li>
+
+                    <li>✓ Revisión inicial</li>
+
+                    <li>✓ Orientación normativa</li>
+
+                    <li>✓ Recomendaciones</li>
+
+                </ul>
+
+                <a href="#diagnostico" class="btn btn-primary">
+                    Consultar
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     DIAGNOSTICO
+========================= -->
+
+<section id="diagnostico">
+
+    <div class="container">
+
+        <div class="diagnostic">
+
+            <div>
+
+                <h2>
+                    ¿No sabés qué trámite necesitás?
+                </h2>
+
+                <p>
+                    Contanos brevemente qué elaborás
+                    y dónde lo hacés. Te contactaremos
+                    para analizar tu situación.
+                </p>
+
+            </div>
+
+
+            <div class="diagnostic-box">
+
+                <h3>
+                    Consulta inicial
+                </h3>
+
+                <input
+                    type="text"
+                    id="nombre"
+                    placeholder="Tu nombre"
+                >
+
+                <input
+                    type="text"
+                    id="localidad"
+                    placeholder="Localidad"
+                >
+
+                <input
+                    type="text"
+                    id="producto"
+                    placeholder="¿Qué alimento elaborás?"
+                >
+
+                <select id="situacion">
+
+                    <option value="">
+                        Seleccioná tu situación
+                    </option>
+
+                    <option>
+                        Quiero formalizar mi emprendimiento
+                    </option>
+
+                    <option>
+                        Quiero tramitar PUPAA
+                    </option>
+
+                    <option>
+                        Quiero registrar un producto
+                    </option>
+
+                    <option>
+                        Necesito asesoramiento
+                    </option>
+
+                    <option>
+                        No sé qué trámite necesito
+                    </option>
+
+                </select>
+
+                <button
+                    class="btn btn-primary"
+                    style="width:100%; border:none;"
+                    onclick="enviarWhatsApp()"
+                >
+                    Solicitar asesoramiento
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FAQ
+========================= -->
+
+<section id="faq">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>
+                Preguntas frecuentes
+            </h2>
+
+            <p>
+                Algunas de las consultas más habituales.
+            </p>
+
+        </div>
+
+
+        <div class="faq">
+
+
+            <div class="faq-item">
+
+                <button class="faq-question">
+                    ¿Qué es PUPAA?
+                    <span>+</span>
+                </button>
+
+                <div class="faq-answer">
+                    PUPAA corresponde al régimen de Pequeñas
+                    Unidades Productivas de Alimentos Artesanales
+                    de la Provincia de Buenos Aires. La aplicación
+                    y requisitos dependen de la actividad y del
+                    producto elaborado.
+                </div>
+
+            </div>
+
+
+            <div class="faq-item">
+
+                <button class="faq-question">
+                    ¿Puedo elaborar alimentos desde mi casa?
+                    <span>+</span>
+                </button>
+
+                <div class="faq-answer">
+                    Puede existir la posibilidad de formalizar
+                    determinadas actividades, pero es necesario
+                    analizar el tipo de alimento, las condiciones
+                    del lugar de elaboración y los requisitos
+                    aplicables.
+                </div>
+
+            </div>
+
+
+            <div class="faq-item">
+
+                <button class="faq-question">
+                    ¿Necesito RNE y RNPA?
+                    <span>+</span>
+                </button>
+
+                <div class="faq-answer">
+                    Depende de la modalidad de elaboración,
+                    comercialización, producto y marco regulatorio
+                    aplicable. Analizamos cada caso antes de
+                    indicarte qué trámite corresponde.
+                </div>
+
+            </div>
+
+
+            <div class="faq-item">
+
+                <button class="faq-question">
+                    ¿Cuánto cuesta el servicio?
+                    <span>+</span>
+                </button>
+
+                <div class="faq-answer">
+                    El valor depende del trámite, cantidad de
+                    productos, documentación disponible y
+                    complejidad del caso. Por eso ofrecemos
+                    una evaluación inicial.
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     SOBRE MI
+========================= -->
+
+<section class="about">
+
+    <div class="container about-grid">
+
+        <div class="profile">
+            JA
+        </div>
+
+
+        <div>
+
+            <h2>
+                Asesoramiento con enfoque técnico.
+            </h2>
+
+            <p>
+                Soy Julián Acosta, Ingeniero en Alimentos,
+                y brindo asesoramiento técnico a emprendimientos
+                y empresas del sector alimentario.
+            </p>
+
+            <p>
+                El objetivo es ayudarte a entender qué
+                requisitos aplican a tu actividad y acompañarte
+                en el proceso de formalización y cumplimiento.
+            </p>
+
+            <p>
+                📍 Buenos Aires, Argentina
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CONTACTO
+========================= -->
+
+<section class="contact" id="contacto">
+
+    <div class="container">
+
+        <h2>
+            ¿Querés formalizar tu emprendimiento?
+        </h2>
+
+        <p>
+            Contame qué producto elaborás y dónde lo hacés.
+            Podemos analizar tu situación y orientarte sobre
+            los pasos a seguir.
+        </p>
+
+        <a
+            href="#diagnostico"
+            class="btn btn-primary"
+        >
+            Solicitar asesoramiento
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div class="container footer-grid">
+
+        <div>
+
+            <div class="footer-logo">
+                PUPAA.
+            </div>
+
+            <div class="footer-text">
+                Ingeniería y asesoramiento alimentario
+            </div>
+
+        </div>
+
+
+        <div class="footer-text">
+            Buenos Aires, Argentina
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- =========================
+     WHATSAPP
+========================= -->
+
+<a
+    href="https://wa.me/5492235471239"
+    class="whatsapp"
+    target="_blank"
+    aria-label="WhatsApp"
+>
+    ☎
+</a>
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script>
+
+    /* =========================
+       MENÚ MOBILE
+    ========================= */
+
+    function toggleMenu() {
+
+        const menu = document.getElementById("menu");
+
+        menu.classList.toggle("active");
+
+    }
+
+
+    /* =========================
+       FAQ
+    ========================= */
+
+    const questions =
+        document.querySelectorAll(".faq-question");
+
+    questions.forEach(function(question) {
+
+        question.addEventListener("click", function() {
+
+            const item =
+                this.parentElement;
+
+            item.classList.toggle("active");
+
+            const icon =
+                this.querySelector("span");
+
+            if (item.classList.contains("active")) {
+
+                icon.textContent = "−";
+
+            } else {
+
+                icon.textContent = "+";
+
+            }
+
+        });
+
+    });
+
+
+    /* =========================
+       WHATSAPP
+    ========================= */
+
+    function enviarWhatsApp() {
+
+        const nombre =
+            document.getElementById("nombre").value;
+
+        const localidad =
+            document.getElementById("localidad").value;
+
+        const producto =
+            document.getElementById("producto").value;
+
+        const situacion =
+            document.getElementById("situacion").value;
+
+
+        if (!nombre || !producto || !situacion) {
+
+            alert(
+                "Por favor completá tu nombre, producto y situación."
+            );
+
+            return;
+
+        }
+
+
+        const mensaje =
+            `Hola, soy ${nombre}.%0A%0A` +
+            `Localidad: ${localidad}%0A` +
+            `Producto: ${producto}%0A` +
+            `Situación: ${situacion}%0A%0A` +
+            `Quisiera recibir asesoramiento sobre mi emprendimiento alimentario.`;
+
+
+        /*
+          REEMPLAZAR XXXXXXXXXX
+          POR TU NÚMERO DE WHATSAPP.
+
+          Ejemplo:
+          5491123456789
+        */
+
+        const telefono =
+            "5492235471239";
+
+
+        const url =
+            `https://wa.me/${telefono}?text=${mensaje}`;
+
+
+        window.open(url, "_blank");
+
+    }
+
+</script>
+
+</body>
+</html>
